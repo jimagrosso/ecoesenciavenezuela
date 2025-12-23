@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecoescencia Venezuela | Organizadores de Bisutería Premium</title>
+    <meta name="description" content="Organizadores elegantes para tu bisutería. Diseño minimalista, envíos a todo Venezuela.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FAF8F5',
+                        'cream-dark': '#F5F1EB',
+                        sage: '#8B9A7D',
+                        'sage-dark': '#6B7A5D',
+                        charcoal: '#3D3D3D',
+                        'warm-gray': '#6B6B6B',
+                        beige: '#D4C8B8',
+                        'beige-light': '#E8E0D5',
+                    },
+                    fontFamily: {
+                        display: ['Cormorant Garamond', 'serif'],
+                        body: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #FAF8F5;
+        }
+        
+        .font-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4C8B8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B9A7D;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        .animate-slide-down {
+            animation: slideDown 0.3s ease-out forwards;
+        }
+        
+        .animation-delay-100 { animation-delay: 0.1s; }
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-300 { animation-delay: 0.3s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-500 { animation-delay: 0.5s; }
+        
+        /* Hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #8B9A7D 0%, #6B7A5D 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 154, 125, 0.35);
+        }
+        
+        .btn-secondary {
+            border: 1.5px solid #3D3D3D;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #3D3D3D;
+            color: #FAF8F5;
+        }
+        
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            animation: pulse-subtle 2s infinite;
+        }
+        
+        /* Modal backdrop */
+        .modal-backdrop {
+            background: rgba(61, 61, 61, 0.6);
+            backdrop-filter: blur(4px);
+        }
+        
+        /* Product card image container */
+        .product-img-container {
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        /* Category card gradient overlay */
+        .category-overlay {
+            background: linear-gradient(180deg, transparent 40%, rgba(61,61,61,0.7) 100%);
+        }
+        
+        /* FAQ accordion */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-content.active {
+            max-height: 200px;
+        }
+        
+        /* Header shadow on scroll */
+        .header-scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Testimonial card */
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #FAF8F5 100%);
+        }
+        
+        /* Tag badges */
+        .badge-new {
+            background: linear-gradient(135deg, #8B9A7D 0%, #6B7A5D 100%);
+        }
+        .badge-bestseller {
+            background: linear-gradient(135deg, #D4C8B8 0%, #C4B8A8 100%);
+            color: #3D3D3D;
+        }
+        .badge-order {
+            background: linear-gradient(135deg, #3D3D3D 0%, #2D2D2D 100%);
+        }
+        
+        /* Input focus styles */
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #8B9A7D;
+            box-shadow: 0 0 0 3px rgba(139, 154, 125, 0.15);
+        }
+        
+        /* Star rating */
+        .star-filled {
+            color: #D4A574;
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal">
+
+    <!-- ============================================ -->
+    <!-- BANNER SUPERIOR -->
+    <!-- ============================================ -->
+    <div class="bg-charcoal text-cream text-center py-2 px-4">
+        <p class="text-sm font-light tracking-wide">Envíos a todo el país 🇻🇪</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- HEADER FIJO -->
+    <!-- ============================================ -->
+    <header id="header" class="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <span class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">ecoescencia<span class="text-sage">venezuela</span></span>
+                </a>
+                
+                <!-- Navigation Desktop -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#inicio" class="text-sm font-medium text-charcoal hover:text-sage transition-colors">Inicio</a>
+                    <a href="#catalogo" class="text-sm font-medium text-charcoal hover:text-sage transition-colors">Catálogo</a>
+                    <a href="#personalizados" class="text-sm font-medium text-charcoal hover:text-sage transition-colors">Personalizados</a>
+                    <a href="#como-comprar" class="text-sm font-medium text-charcoal hover:text-sage transition-colors">Cómo comprar</a>
+                    <a href="#contacto" class="text-sm font-medium text-charcoal hover:text-sage transition-colors">Contacto</a>
+                </nav>
+                
+                <!-- CTA Button Desktop -->
+                <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20me%20interesa%20un%20producto" target="_blank" class="hidden lg:flex items-center gap-2 btn-primary text-white px-5 py-2.5 rounded-full text-sm font-medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Comprar por WhatsApp
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-charcoal">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 bg-cream shadow-xl z-50 lg:hidden">
+            <div class="p-6">
+                <button id="closeMobileMenu" class="absolute top-4 right-4 p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <nav class="mt-8 flex flex-col gap-4">
+                    <a href="#inicio" class="text-lg font-medium text-charcoal hover:text-sage transition-colors py-2">Inicio</a>
+                    <a href="#catalogo" class="text-lg font-medium text-charcoal hover:text-sage transition-colors py-2">Catálogo</a>
+                    <a href="#personalizados" class="text-lg font-medium text-charcoal hover:text-sage transition-colors py-2">Personalizados</a>
+                    <a href="#como-comprar" class="text-lg font-medium text-charcoal hover:text-sage transition-colors py-2">Cómo comprar</a>
+                    <a href="#contacto" class="text-lg font-medium text-charcoal hover:text-sage transition-colors py-2">Contacto</a>
+                    <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20me%20interesa%20un%20producto" target="_blank" class="mt-4 flex items-center justify-center gap-2 btn-primary text-white px-5 py-3 rounded-full text-sm font-medium">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================ -->
+    <section id="inicio" class="relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-28">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-charcoal leading-tight animate-fade-in-up" style="opacity: 0;">
+                        Organización elegante para tu bisutería
+                    </h1>
+                    <p class="mt-6 text-lg text-warm-gray font-light leading-relaxed animate-fade-in-up animation-delay-100" style="opacity: 0;">
+                        Exhibidores y organizadores con diseño minimalista que transforman tu espacio en una boutique personal.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-200" style="opacity: 0;">
+                        <a href="#catalogo" class="btn-primary text-white px-8 py-3.5 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2">
+                            Ver catálogo
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20quiero%20más%20información" target="_blank" class="btn-secondary text-charcoal px-8 py-3.5 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Comprar por WhatsApp
+                        </a>
+                    </div>
+                    
+                    <!-- Benefits -->
+                    <div class="mt-12 grid grid-cols-3 gap-4 animate-fade-in-up animation-delay-300" style="opacity: 0;">
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto bg-beige-light rounded-full flex items-center justify-center mb-3">
+                                <svg class="w-5 h-5 text-sage-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                            </div>
+                            <p class="text-xs sm:text-sm text-charcoal font-medium">Diseño minimalista</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto bg-beige-light rounded-full flex items-center justify-center mb-3">
+                                <svg class="w-5 h-5 text-sage-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                            </div>
+                            <p class="text-xs sm:text-sm text-charcoal font-medium">Listas y bajo pedido</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto bg-beige-light rounded-full flex items-center justify-center mb-3">
+                                <svg class="w-5 h-5 text-sage-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <p class="text-xs sm:text-sm text-charcoal font-medium">Envíos a toda VE</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="relative animate-fade-in-up animation-delay-200" style="opacity: 0;">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-cream-dark">
+                        <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_41_18_p__m_.png" alt="Organizador de bisutería elegante" class="w-full h-[400px] md:h-[500px] object-cover">
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-sage/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-beige/30 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-beige-light/30 to-transparent -z-10"></div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CATEGORÍAS DESTACADAS -->
+    <!-- ============================================ -->
+    <section class="py-16 md:py-24 bg-cream-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">Explora por categoría</h2>
+                <p class="mt-3 text-warm-gray font-light">Encuentra el organizador perfecto para cada tipo de accesorio</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                <!-- Aretes -->
+                <button onclick="filterProducts('aretes')" class="category-card group relative rounded-2xl overflow-hidden aspect-square card-hover">
+                    <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_27_56_p__m_.png" alt="Organizadores de aretes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="category-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-white font-medium text-lg">Aretes</h3>
+                    </div>
+                </button>
+                
+                <!-- Anillos -->
+                <button onclick="filterProducts('anillos')" class="category-card group relative rounded-2xl overflow-hidden aspect-square card-hover">
+                    <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_38_56_p__m_.png" alt="Organizadores de anillos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="category-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-white font-medium text-lg">Anillos</h3>
+                    </div>
+                </button>
+                
+                <!-- Collares -->
+                <button onclick="filterProducts('collares')" class="category-card group relative rounded-2xl overflow-hidden aspect-square card-hover">
+                    <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_36_25_p__m_.png" alt="Organizadores de collares" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="category-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-white font-medium text-lg">Collares</h3>
+                    </div>
+                </button>
+                
+                <!-- Mixtos -->
+                <button onclick="filterProducts('mixtos')" class="category-card group relative rounded-2xl overflow-hidden aspect-square card-hover">
+                    <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_42_27_p__m_.png" alt="Organizadores mixtos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="category-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-white font-medium text-lg">Mixtos</h3>
+                    </div>
+                </button>
+                
+                <!-- Personalizados -->
+                <button onclick="filterProducts('personalizados')" class="category-card group relative rounded-2xl overflow-hidden aspect-square card-hover col-span-2 md:col-span-1">
+                    <img src="images/Captura_de_pantalla_2025-12-23_a_la_s__12_50_28_p__m_.png" alt="Organizadores personalizados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="category-overlay absolute inset-0"></div>
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <h3 class="text-white font-medium text-lg">Personalizados</h3>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <!-- ============================================ -->
+    <section id="catalogo" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">Nuestro catálogo</h2>
+                <p class="mt-3 text-warm-gray font-light">Piezas únicas diseñadas para organizar con estilo</p>
+            </div>
+            
+            <!-- Filters & Search -->
+            <div class="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
+                <!-- Search -->
+                <div class="relative w-full md:w-80">
+                    <input type="text" id="searchInput" placeholder="Buscar productos..." class="w-full bg-white border border-beige rounded-full px-5 py-3 text-sm pr-10 focus:ring-0">
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-warm-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <select id="categoryFilter" class="bg-white border border-beige rounded-full px-4 py-2.5 text-sm focus:ring-0 cursor-pointer">
+                        <option value="todos">Todas las categorías</option>
+                        <option value="aretes">Aretes</option>
+                        <option value="anillos">Anillos</option>
+                        <option value="collares">Collares</option>
+                        <option value="mixtos">Mixtos</option>
+                        <option value="personalizados">Personalizados</option>
+                    </select>
+                    <select id="sortFilter" class="bg-white border border-beige rounded-full px-4 py-2.5 text-sm focus:ring-0 cursor-pointer">
+                        <option value="destacados">Más vendidos</option>
+                        <option value="nuevos">Nuevos</option>
+                        <option value="precio-menor">Precio: menor a mayor</option>
+                        <option value="precio-mayor">Precio: mayor a menor</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Active filter tag -->
+            <div id="activeFilterTag" class="hidden mb-6 flex items-center gap-2">
+                <span class="text-sm text-warm-gray">Filtrando por:</span>
+                <span id="filterTagText" class="bg-sage/10 text-sage-dark px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2">
+                    <span id="filterTagName">Categoría</span>
+                    <button onclick="clearFilters()" class="hover:text-charcoal">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </span>
+            </div>
+            
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Products will be inserted by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN PERSONALIZADOS -->
+    <!-- ============================================ -->
+    <section id="personalizados" class="py-16 md:py-24 bg-charcoal text-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div>
+                    <span class="inline-block bg-sage/20 text-sage px-4 py-1.5 rounded-full text-sm font-medium mb-6">Bajo pedido</span>
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+                        ¿Tienes algo especial en mente?
+                    </h2>
+                    <p class="mt-6 text-beige-light/80 font-light text-lg leading-relaxed">
+                        Diseñamos piezas únicas adaptadas a tu gusto y necesidades. Cuéntanos tu idea y la hacemos realidad.
+                    </p>
+                    
+                    <ul class="mt-8 space-y-4">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-sage/20 flex items-center justify-center">
+                                <svg class="w-3 h-3 text-sage" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-beige-light">Colores personalizados</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-sage/20 flex items-center justify-center">
+                                <svg class="w-3 h-3 text-sage" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-beige-light">Tamaños a medida</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-sage/20 flex items-center justify-center">
+                                <svg class="w-3 h-3 text-sage" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                            </div>
+                            <span class="text-beige-light">Diseños exclusivos</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Form -->
+                <div class="bg-cream/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-cream/10">
+                    <h3 class="font-display text-2xl font-semibold mb-6">Solicita tu diseño</h3>
+                    <form id="customForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-beige-light mb-2">Tu nombre</label>
+                            <input type="text" id="customName" required placeholder="María González" class="w-full bg-cream/10 border border-cream/20 rounded-xl px-4 py-3 text-cream placeholder-cream/40 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-beige-light mb-2">Tipo de pieza</label>
+                            <select id="customType" required class="w-full bg-cream/10 border border-cream/20 rounded-xl px-4 py-3 text-cream text-sm">
+                                <option value="" class="text-charcoal">Selecciona una opción</option>
+                                <option value="Organizador de aretes" class="text-charcoal">Organizador de aretes</option>
+                                <option value="Organizador de anillos" class="text-charcoal">Organizador de anillos</option>
+                                <option value="Organizador de collares" class="text-charcoal">Organizador de collares</option>
+                                <option value="Organizador mixto" class="text-charcoal">Organizador mixto</option>
+                                <option value="Otro" class="text-charcoal">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-beige-light mb-2">Cuéntanos tu idea</label>
+                            <textarea id="customComments" rows="4" placeholder="Describe tu idea, colores preferidos, tamaño aproximado..." class="w-full bg-cream/10 border border-cream/20 rounded-xl px-4 py-3 text-cream placeholder-cream/40 text-sm resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-sage hover:bg-sage-dark text-white py-3.5 rounded-full font-medium transition-colors flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Solicitar diseño personalizado
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CÓMO COMPRAR -->
+    <!-- ============================================ -->
+    <section id="como-comprar" class="py-16 md:py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">¿Cómo comprar?</h2>
+                <p class="mt-3 text-warm-gray font-light">Proceso simple y seguro en 4 pasos</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center group">
+                    <div class="relative">
+                        <div class="w-16 h-16 mx-auto bg-sage/10 rounded-2xl flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                            <span class="font-display text-2xl font-semibold text-sage">1</span>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-beige -translate-y-1/2"></div>
+                    </div>
+                    <h3 class="mt-6 font-medium text-charcoal">Elige tu organizador</h3>
+                    <p class="mt-2 text-sm text-warm-gray font-light">Explora nuestro catálogo y encuentra el diseño perfecto</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center group">
+                    <div class="relative">
+                        <div class="w-16 h-16 mx-auto bg-sage/10 rounded-2xl flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                            <span class="font-display text-2xl font-semibold text-sage">2</span>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-beige -translate-y-1/2"></div>
+                    </div>
+                    <h3 class="mt-6 font-medium text-charcoal">Escríbenos</h3>
+                    <p class="mt-2 text-sm text-warm-gray font-light">Contáctanos por WhatsApp o MercadoLibre</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center group">
+                    <div class="relative">
+                        <div class="w-16 h-16 mx-auto bg-sage/10 rounded-2xl flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                            <span class="font-display text-2xl font-semibold text-sage">3</span>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-beige -translate-y-1/2"></div>
+                    </div>
+                    <h3 class="mt-6 font-medium text-charcoal">Coordinamos</h3>
+                    <p class="mt-2 text-sm text-warm-gray font-light">Acordamos pago y detalles del envío</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="text-center group">
+                    <div class="relative">
+                        <div class="w-16 h-16 mx-auto bg-sage/10 rounded-2xl flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                            <span class="font-display text-2xl font-semibold text-sage">4</span>
+                        </div>
+                    </div>
+                    <h3 class="mt-6 font-medium text-charcoal">Recibe en casa</h3>
+                    <p class="mt-2 text-sm text-warm-gray font-light">Tu organizador llega a la puerta de tu hogar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TESTIMONIOS -->
+    <!-- ============================================ -->
+    <section class="py-16 md:py-24 bg-cream-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">Lo que dicen nuestras clientas</h2>
+                <p class="mt-3 text-warm-gray font-light">Experiencias reales de quienes ya organizan con estilo</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"Hermoso el organizador de aretes, ahora encuentro todo super fácil. La atención fue excelente y llegó antes de lo esperado."</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">Carolina Méndez</p>
+                        <p class="text-sm text-warm-gray">Caracas</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"Pedí uno personalizado en rosa y quedó espectacular. Se nota la dedicación en cada detalle. Ya voy por el tercero."</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">Valentina Rodríguez</p>
+                        <p class="text-sm text-warm-gray">Valencia</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"Lo compré como regalo para mi mamá y le encantó. Empaque muy cuidado y el diseño del árbol es precioso."</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">Andrea Martínez</p>
+                        <p class="text-sm text-warm-gray">Maracaibo</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"Super práctico para mis aretes. Ya no pierdo pares y se ven hermosos exhibidos. Muy recomendado."</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">Gabriela Torres</p>
+                        <p class="text-sm text-warm-gray">Barquisimeto</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"El organizador hexagonal es una obra de arte. Combina perfecto con mi decoración y caben todos mis accesorios."</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">María Fernanda López</p>
+                        <p class="text-sm text-warm-gray">Puerto Ordaz</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card rounded-2xl p-6 card-hover">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 star-filled" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-charcoal font-light leading-relaxed">"Excelente calidad y el envío fue súper rápido. El de anillos es justo lo que necesitaba. Gracias!"</p>
+                    <div class="mt-4 pt-4 border-t border-beige">
+                        <p class="font-medium text-charcoal">Daniela Herrera</p>
+                        <p class="text-sm text-warm-gray">Mérida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PREGUNTAS FRECUENTES -->
+    <!-- ============================================ -->
+    <section class="py-16 md:py-24 bg-cream">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">Preguntas frecuentes</h2>
+                <p class="mt-3 text-warm-gray font-light">Todo lo que necesitas saber</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Hacen envíos a todo el país?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">Sí, realizamos envíos a toda Venezuela a través de empresas de encomiendas confiables. El costo del envío depende de tu ubicación y lo coordinamos al momento de tu compra.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Hay piezas listas para enviar?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">Sí, tenemos varios modelos en stock listos para envío inmediato. Los productos marcados como "Disponible" pueden despacharse en 24-48 horas. Los demás se fabrican bajo pedido.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Trabajan bajo pedido?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">¡Claro! Podemos crear piezas personalizadas según tus preferencias de color, tamaño o diseño. Solo contáctanos por WhatsApp con tu idea y te daremos todos los detalles.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Cuánto tarda el envío?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">El tiempo de envío varía según tu ubicación, generalmente entre 2 a 5 días hábiles después del despacho. Te proporcionamos número de seguimiento para que puedas rastrear tu pedido.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Cómo compro por MercadoLibre?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">Puedes visitar nuestra tienda en MercadoLibre y realizar tu compra con todas las garantías de la plataforma. Encuentra el enlace en nuestro catálogo o en el pie de página.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div class="faq-item bg-white rounded-xl overflow-hidden">
+                    <button class="faq-button w-full px-6 py-4 flex items-center justify-between text-left" onclick="toggleFaq(this)">
+                        <span class="font-medium text-charcoal">¿Cómo contacto por WhatsApp?</span>
+                        <svg class="faq-icon w-5 h-5 text-sage transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-content px-6 pb-4">
+                        <p class="text-warm-gray font-light">Solo haz clic en cualquier botón de WhatsApp en esta página o escríbenos directamente al +58 414 979 6282. Respondemos todos los días de 9am a 7pm.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CONTACTO -->
+    <!-- ============================================ -->
+    <section id="contacto" class="py-16 md:py-24 bg-sage/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal">¿Lista para organizar con estilo?</h2>
+            <p class="mt-4 text-warm-gray font-light text-lg max-w-2xl mx-auto">
+                Estamos aquí para ayudarte a encontrar el organizador perfecto. Escríbenos y te atenderemos con gusto.
+            </p>
+            
+            <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20quiero%20más%20información%20sobre%20sus%20productos" target="_blank" class="mt-8 inline-flex items-center gap-3 btn-primary text-white px-8 py-4 rounded-full text-lg font-medium">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Escribir por WhatsApp
+            </a>
+            
+            <p class="mt-6 text-warm-gray">
+                <span class="font-medium">Horario de atención:</span> Lunes a Sábado, 9:00 AM - 7:00 PM
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="bg-charcoal text-cream py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <!-- Logo & Tagline -->
+                <div class="text-center md:text-left">
+                    <h3 class="font-display text-2xl font-semibold">ecoescencia<span class="text-sage">venezuela</span></h3>
+                    <p class="mt-2 text-beige-light/70 font-light">Organización elegante para tu bisutería</p>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="text-center">
+                    <p class="text-beige-light/70 font-light mb-4">También puedes encontrarnos en MercadoLibre e Instagram</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <a href="https://instagram.com/ecoesenciavenezuela" target="_blank" class="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sage/30 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://listado.mercadolibre.com.ve/_CustId_2617783776_PrCategId_AD#origin=vip&component=sellerData&typeSeller=classic" target="_blank" class="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sage/30 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.787c-.14.138-.337.213-.54.213H6.646a.763.763 0 01-.54-.213.744.744 0 01-.22-.532V6.745c0-.204.08-.393.22-.532a.763.763 0 01.54-.213h10.708c.203 0 .4.075.54.213a.744.744 0 01.22.532v10.51a.744.744 0 01-.22.532zM12 5.5c-1.93 0-3.5 1.57-3.5 3.5 0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5c0-1.93-1.57-3.5-3.5-3.5z"/></svg>
+                        </a>
+                        <a href="https://wa.me/584149796282" target="_blank" class="w-10 h-10 rounded-full bg-cream/10 flex items-center justify-center hover:bg-sage/30 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Legal -->
+                <div class="text-center md:text-right">
+                    <p class="text-beige-light/50 text-sm">© 2024 ecoescenciavenezuela</p>
+                    <p class="text-beige-light/50 text-sm mt-1">Todos los derechos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- ============================================ -->
+    <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20me%20interesa%20un%20producto" target="_blank" class="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ============================================ -->
+    <!-- PRODUCT MODAL -->
+    <!-- ============================================ -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop absolute inset-0" onclick="closeModal()"></div>
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div class="bg-cream rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div id="modalContent">
+                    <!-- Modal content will be inserted by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Estante Multi-nivel",
+                description: "Organizador de 4 niveles para aretes",
+                longDescription: "Elegante organizador de 4 niveles perfecto para exhibir tu colección de aretes. Su diseño escalonado permite visualizar todas tus piezas de un vistazo, manteniendo cada par organizado y accesible.",
+                price: 25,
+                category: "aretes",
+                tag: "bestseller",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_27_56_p__m_.png",
+                dimensions: "20 x 15 x 18 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 2,
+                name: "Árbol Decorativo",
+                description: "Exhibidor en forma de árbol con ramas",
+                longDescription: "Hermoso exhibidor con diseño de árbol que convierte tu bisutería en una pieza decorativa. Perfecto para aretes largos y medianos. Su forma orgánica añade un toque natural a tu espacio.",
+                price: 28,
+                category: "aretes",
+                tag: "new",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_34_24_p__m_.png",
+                dimensions: "25 x 8 x 28 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 3,
+                name: "Mini Closet",
+                description: "Organizador tipo perchero miniatura",
+                longDescription: "Adorable organizador inspirado en un closet con ganchos miniatura. Ideal para colgar aretes largos de forma ordenada y elegante. Un diseño único que destacará en cualquier tocador.",
+                price: 22,
+                category: "aretes",
+                tag: "new",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_35_26_p__m_.png",
+                dimensions: "15 x 8 x 18 cm",
+                delivery: "Bajo pedido: 5-7 días"
+            },
+            {
+                id: 4,
+                name: "Porta Collares Vertical",
+                description: "Exhibidor vertical con ganchos para collares",
+                longDescription: "Organizador vertical diseñado específicamente para collares y cadenas. Sus ganchos espaciados evitan enredos y permiten visualizar cada pieza. Mantén tus collares siempre listos para usar.",
+                price: 24,
+                category: "collares",
+                tag: "bestseller",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_36_25_p__m_.png",
+                dimensions: "12 x 5 x 28 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 5,
+                name: "Torre Arco",
+                description: "Estante con forma de arco elegante",
+                longDescription: "Sofisticado organizador con diseño de arco que combina funcionalidad y estética. Múltiples niveles para aretes de diferentes tamaños. Su forma arquitectónica añade un toque moderno a tu espacio.",
+                price: 26,
+                category: "aretes",
+                tag: null,
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_37_49_p__m_.png",
+                dimensions: "18 x 8 x 30 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 6,
+                name: "Porta Anillos Wave",
+                description: "Organizador ondulado para anillos",
+                longDescription: "Práctico organizador con ranuras onduladas diseñado para mantener tus anillos seguros y visibles. Su diseño compacto es perfecto para espacios pequeños sin sacrificar capacidad.",
+                price: 18,
+                category: "anillos",
+                tag: "bestseller",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_38_56_p__m_.png",
+                dimensions: "12 x 4 x 8 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 7,
+                name: "Panel Minimalista",
+                description: "Panel perforado estilo moderno",
+                longDescription: "Elegante panel con perforaciones para colgar aretes de forma ordenada. Su diseño minimalista se adapta a cualquier decoración. Ideal para quienes buscan simplicidad y funcionalidad.",
+                price: 20,
+                category: "aretes",
+                tag: null,
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_40_01_p__m_.png",
+                dimensions: "15 x 5 x 22 cm",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 8,
+                name: "Panal Hexagonal",
+                description: "Exhibidor con patrón de panal de abeja",
+                longDescription: "Impresionante exhibidor con diseño de panal hexagonal que incluye bandeja para anillos y piezas pequeñas. Una pieza decorativa que organiza aretes, collares y más.",
+                price: 35,
+                category: "mixtos",
+                tag: "new",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_41_18_p__m_.png",
+                dimensions: "25 x 10 x 28 cm",
+                delivery: "Bajo pedido: 5-7 días"
+            },
+            {
+                id: 9,
+                name: "Closet Rainbow",
+                description: "Organizador con ganchos multicolor",
+                longDescription: "Divertido organizador tipo closet con ganchos de colores arcoíris. Incluye paneles laterales perforados y bandeja inferior. Perfecto para quienes buscan un toque de color.",
+                price: 32,
+                category: "mixtos",
+                tag: null,
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_42_27_p__m_.png",
+                dimensions: "22 x 12 x 20 cm",
+                delivery: "Bajo pedido: 5-7 días"
+            },
+            {
+                id: 10,
+                name: "Árbol con Aves",
+                description: "Exhibidor decorativo con pájaros",
+                longDescription: "Precioso exhibidor en forma de árbol con detalles de aves posadas. Incluye bandeja en la base para piezas pequeñas. Una verdadera pieza de decoración que organiza tu bisutería.",
+                price: 38,
+                category: "mixtos",
+                tag: "order",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_44_26_p__m_.png",
+                dimensions: "20 x 12 x 25 cm",
+                delivery: "Bajo pedido: 7-10 días"
+            },
+            {
+                id: 11,
+                name: "Set Modular Compacto",
+                description: "Sistema modular de dos piezas",
+                longDescription: "Práctico set de dos piezas modulares que puedes usar juntas o separadas. Incluye panel vertical y estante con ranuras. Ideal para espacios reducidos con mucha bisutería.",
+                price: 30,
+                category: "aretes",
+                tag: "bestseller",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_45_37_p__m_.png",
+                dimensions: "12 x 8 x 15 cm (c/u)",
+                delivery: "3-5 días hábiles"
+            },
+            {
+                id: 12,
+                name: "Cactus Organizador",
+                description: "Exhibidor con forma de cactus y bandeja",
+                longDescription: "Original organizador con diseño de cactus que incluye bandeja para anillos y piezas pequeñas. Un diseño único y divertido que añade personalidad a cualquier espacio.",
+                price: 28,
+                category: "mixtos",
+                tag: "new",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_47_42_p__m_.png",
+                dimensions: "15 x 15 x 22 cm",
+                delivery: "Bajo pedido: 5-7 días"
+            },
+            {
+                id: 13,
+                name: "Gatito Kawaii",
+                description: "Panel con forma de gato adorable",
+                longDescription: "Tierno panel perforado con forma de cara de gato. Perfecto para los amantes de los felinos. Su diseño kawaii añade un toque dulce y divertido mientras mantiene tus aretes organizados.",
+                price: 24,
+                category: "personalizados",
+                tag: "order",
+                image: "images/Captura_de_pantalla_2025-12-23_a_la_s__12_50_28_p__m_.png",
+                dimensions: "20 x 5 x 20 cm",
+                delivery: "Bajo pedido: 5-7 días"
+            }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            initializeEventListeners();
+        });
+
+        // Render Products
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            productsToRender.forEach((product, index) => {
+                const tagHTML = product.tag ? getTagHTML(product.tag) : '';
+                
+                const card = document.createElement('div');
+                card.className = 'product-card bg-white rounded-xl overflow-hidden card-hover';
+                card.style.opacity = '0';
+                card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.05}s forwards`;
+                
+                card.innerHTML = `
+                    <div class="product-img-container aspect-square bg-cream-dark relative">
+                        ${tagHTML}
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover img-zoom cursor-pointer" onclick="openModal(${product.id})">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-charcoal text-sm md:text-base">${product.name}</h3>
+                        <p class="text-warm-gray text-xs md:text-sm font-light mt-1">${product.description}</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <span class="font-display text-xl font-semibold text-charcoal">$${product.price}</span>
+                            <button onclick="openModal(${product.id})" class="text-sage hover:text-sage-dark transition-colors text-sm font-medium">
+                                Ver más
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Get Tag HTML
+        function getTagHTML(tag) {
+            const tags = {
+                'new': '<span class="absolute top-3 left-3 badge-new text-white text-xs px-2 py-1 rounded-full">Nuevo</span>',
+                'bestseller': '<span class="absolute top-3 left-3 badge-bestseller text-xs px-2 py-1 rounded-full">Más vendido</span>',
+                'order': '<span class="absolute top-3 left-3 badge-order text-white text-xs px-2 py-1 rounded-full">Bajo pedido</span>'
+            };
+            return tags[tag] || '';
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            document.getElementById('categoryFilter').value = category;
+            applyFilters();
+            
+            // Show active filter tag
+            const filterTag = document.getElementById('activeFilterTag');
+            const filterTagName = document.getElementById('filterTagName');
+            filterTag.classList.remove('hidden');
+            filterTag.classList.add('flex');
+            filterTagName.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            
+            // Scroll to catalog
+            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Clear Filters
+        function clearFilters() {
+            document.getElementById('categoryFilter').value = 'todos';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('activeFilterTag').classList.add('hidden');
+            document.getElementById('activeFilterTag').classList.remove('flex');
+            renderProducts(products);
+        }
+
+        // Apply Filters
+        function applyFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filtered = [...products];
+            
+            // Filter by category
+            if (category !== 'todos') {
+                filtered = filtered.filter(p => p.category === category);
+            }
+            
+            // Filter by search
+            if (search) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(search) || 
+                    p.description.toLowerCase().includes(search)
+                );
+            }
+            
+            // Sort
+            switch (sort) {
+                case 'nuevos':
+                    filtered = filtered.filter(p => p.tag === 'new').concat(filtered.filter(p => p.tag !== 'new'));
+                    break;
+                case 'precio-menor':
+                    filtered.sort((a, b) => a.price - b.price);
+                    break;
+                case 'precio-mayor':
+                    filtered.sort((a, b) => b.price - a.price);
+                    break;
+                case 'destacados':
+                default:
+                    filtered = filtered.filter(p => p.tag === 'bestseller').concat(filtered.filter(p => p.tag !== 'bestseller'));
+                    break;
+            }
+            
+            renderProducts(filtered);
+            
+            // Update filter tag visibility
+            if (category !== 'todos') {
+                const filterTag = document.getElementById('activeFilterTag');
+                const filterTagName = document.getElementById('filterTagName');
+                filterTag.classList.remove('hidden');
+                filterTag.classList.add('flex');
+                filterTagName.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            } else if (!search) {
+                document.getElementById('activeFilterTag').classList.add('hidden');
+                document.getElementById('activeFilterTag').classList.remove('flex');
+            }
+        }
+
+        // Open Modal
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const tagHTML = product.tag ? getTagHTML(product.tag).replace('absolute top-3 left-3', 'inline-block mb-4') : '';
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-64 md:h-full object-cover rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
+                    </div>
+                    <div class="p-6 md:w-1/2">
+                        ${tagHTML}
+                        <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal">${product.name}</h2>
+                        <p class="text-warm-gray font-light mt-3 leading-relaxed">${product.longDescription}</p>
+                        
+                        <div class="mt-6 space-y-3 text-sm">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                                <span class="text-charcoal"><strong>Medidas:</strong> ${product.dimensions}</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-charcoal"><strong>Entrega:</strong> ${product.delivery}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <span class="font-display text-3xl font-semibold text-charcoal">$${product.price}</span>
+                        </div>
+                        
+                        <div class="mt-6 space-y-3">
+                            <a href="https://wa.me/584149796282?text=Hola%20ecoescenciavenezuela,%20me%20interesa%20el%20producto:%20${encodeURIComponent(product.name)}%20($${product.price})" target="_blank" class="w-full flex items-center justify-center gap-2 btn-primary text-white py-3 rounded-full font-medium">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Comprar por WhatsApp
+                            </a>
+                            <a href="https://listado.mercadolibre.com.ve/_CustId_2617783776_PrCategId_AD#origin=vip&component=sellerData&typeSeller=classic" target="_blank" class="w-full flex items-center justify-center gap-2 btn-secondary text-charcoal py-3 rounded-full font-medium">
+                                Ver en MercadoLibre
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('productModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeMobileMenu();
+            }
+        });
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('.faq-icon').style.transform = '';
+                }
+            });
+            
+            // Toggle current FAQ
+            content.classList.toggle('active');
+            icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+        }
+
+        // Mobile Menu
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Custom Form
+        document.getElementById('customForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('customName').value;
+            const type = document.getElementById('customType').value;
+            const comments = document.getElementById('customComments').value;
+            
+            const message = `Hola ecoescenciavenezuela, me llamo ${name} y me gustaría solicitar un diseño personalizado.%0A%0ATipo de pieza: ${type}%0A%0ADetalles: ${comments || 'Sin detalles adicionales'}`;
+            
+            window.open(`https://wa.me/584149796282?text=${message}`, '_blank');
+        });
+
+        // Initialize Event Listeners
+        function initializeEventListeners() {
+            // Mobile menu buttons
+            document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+            document.getElementById('closeMobileMenu').addEventListener('click', closeMobileMenu);
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Filter change events
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('sortFilter').addEventListener('change', applyFilters);
+            
+            // Search input
+            let searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(applyFilters, 300);
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
